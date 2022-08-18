@@ -14,8 +14,13 @@ const userSchema = new Schema (
             unique: true,
             //add email validation
         },
-        thoughts: [{ type: Schema.Types.ObjectId, ref: 'thoughts'}],
-        friends: [{ type: Schema.Types.ObjectId, ref: 'user'}]
+        thoughts: [{ type: Schema.Types.ObjectId, ref: 'thought'}],
+        friends: [{ type: Schema.Types.ObjectId, ref: 'user'}],
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        }
     }
 );
 // Creating a virtual property 'friendCount' that gets the amount of friends a user has
@@ -23,4 +28,6 @@ userSchema.virtual('friendCount').get(function () {
     return this.friends.length;
 });
 
-module.exports = Users; 
+const User = model('user', userSchema)
+
+module.exports = User; 
