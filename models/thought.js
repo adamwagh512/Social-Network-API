@@ -7,11 +7,11 @@ const thoughtSchema = new Schema(
         thoughtText: {
             type: String,
             required: true,
-            // look at how to set length between 1 and 280 characters
+            maxLength: 280
         },
         createdAt: {
-            type: Date,
-            //set default to current time stamp
+            type: Date, 
+            default: Date.now
             //use a getter method to format the timestamp on query
         },
         username: {
@@ -22,5 +22,20 @@ const thoughtSchema = new Schema(
             //array of nested documents created with the `reactionSchema`
         },
        
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        }
     }
 )
+
+thoughtSchema
+.virtual('timeCreated')
+.get(function () {
+    return `${this.createdAt}`
+})
+
+
+const Thought = model('thought', thoughtSchema)
+module.exports = Thought; 
