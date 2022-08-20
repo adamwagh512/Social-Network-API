@@ -3,9 +3,9 @@ const router = require('express').Router();
 const {
     getThoughts,
     createThought,
-    // getSingleThought,
-    // updateAThought,
-    // deleteAThought,
+    getSingleThought,
+    updateAThought,
+    deleteAThought,
     // createReaction,
     // deleteReaction,
 } = require('../../controller/thoughtController')
@@ -21,9 +21,9 @@ router
 // GET to get a single thought by its _id,
 router
 .route('/:_id')
-// .get(getSingleThought)
-// .put(updateAThought)
-// .delete(deleteAThought);
+.get(getSingleThought)
+.put(updateAThought)
+.delete(deleteAThought);
 // POST to create a reaction stored in a single thought's reactions array field
 // DELETE to pull and remove a reaction by the reaction's reactionId value
 router
