@@ -10,6 +10,12 @@ module.exports = {
 //create a new thought 
     createThought (req,res) {
         Thought.create(req.body)
+        .then ((thought) => {
+          return User.findOneAndUpdate(
+            {username: req.body.username},
+            { $addToSet: {thoughts: thoughts._id}}
+          )
+        })
         .then((newThought) => res.json(newThought))
         .catch((err) => res.status(500).json(err))
     },
