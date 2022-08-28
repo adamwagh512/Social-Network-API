@@ -47,5 +47,21 @@ deleteAThought(req, res) {
       .then(() => res.json({ message: 'Thought was deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
+  createReaction(req,res) {
+    Thought.findOneAndUpdate(
+        {_id: req.params._id},
+        { $addToSet: req.body},
+        { runValidators: true, new: true }
+        )   
+        .then((reaction) =>
+        !reaction
+          ? res.status(404).json({ message: 'No thought with this id!' })
+          : res.json(reaction)
+      )
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 }
 
