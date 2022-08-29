@@ -15,7 +15,7 @@ Welcome to my Social Network API application. The purpose of this challenge was 
 
 4) Have some fun performing CRUD operations on this backend application
 
-5) I have made a full video walkthough of me using this program. Check it out [here]()!
+5) I have made a full video walkthough of me using this program. Check it out [here](https://drive.google.com/file/d/1hqgMGxFqQsov1zy95eL29bk1vwF5uHQI/view)!
 ## Acknowledgements
 I would like to acknowledge my tutor Jack Linhert and TA Ian for their invaluable contributions. This project was difficult and they helped me to understand the core concepts needed to bring this project to life.
 
